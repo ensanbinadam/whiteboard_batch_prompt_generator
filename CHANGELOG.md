@@ -1,33 +1,18 @@
-## v2.2 — مجموعات محفوظة وإدارة ملفات فعلية (2026-10-12)
+# Changelog
 
-- تحويل «اسم المجموعة» إلى جزء من مكتبة مجموعات محلية قابلة للإنشاء والنسخ والتبديل والحذف والاستيراد والتصدير.
-- توضيح أن «رقم المجموعة» هو بادئة تسمية وليس محرر مشاهد.
-- إضافة إسناد صور ناتجة يدويًا إلى العناصر، مع تنزيل كل ملف باسم مرقّم صحيح.
-- إضافة توليد حزمة ZIP **حقيقية** للملفات المرفقة دون خدمات خارجية.
-- حفظ امتدادات الملفات وفق محتواها الفعلي قدر الإمكان، دون التحويل بين PNG/SVG/WebP/JPEG.
-- تسمية ملف إعدادات المجموعة عند التصدير باسم المجموعة، مع إبقاء قالب البرومبت الأصلي دون تغيير.
-- الاحتفاظ بالتذييل ونصوص حقوق المشروع.
-- ملاحظة: الملفات المرفقة لا تحفظ داخل المتصفح بعد الإغلاق، بل تُنزّل عند الطلب.
+## 2.3 — Simplified teaching workflow
+- Removed scene numbers and compulsory image filenames from the interface and prompts.
+- Removed output image organizer, ZIP-rename workflow, and JSON export controls.
+- Retained strict separate-asset batch requests and the optional single-item prompt.
+- Kept PNG/SVG/WebP/color/style controls, with optional advanced options in a collapsed section.
+- Kept only optional local saved group names and lists; migration from v2.2 is attempted without deleting old data.
+- Preserved educator credit footer and documented actual limitations.
 
-## v2.1.1 — تذييل الصفحات وحفظ الاستقرار (2026-10-12)
+## 2.2 — Previous experimental organizer edition
+- Saved group library, file assignments, and ZIP renaming (not part of simplified edition).
 
-- إضافة تذييل موحّد يتضمن اسم صاحب المشروع، الحقوق، قناة Telegram، واعتماد ChatGPT مع رابط رسمي.
-- تعديل صفحات HTML الأربع فقط؛ لا تغييرات على JavaScript أو منطق البرومبتات أو صيغ الإخراج.
-- الإبقاء على ترخيص MIT للشيفرة المفتوحة.
+## 2.1.1
+- Educator footer and attribution.
 
-# سجل التحديثات
-
-## 2.1 — تحسين التعامل مع SVG الحقيقي
-
-- توضيح أربع طرق للإخراج: PNG، SVG متجهي إلزامي، SVG مفضّل مع بديل PNG، وWebP.
-- تصحيح أسماء الملفات والبرومبتات الجماعية والفردية عند السماح بالبديل PNG.
-- منع قبول SVG يحتوي على صورة نقطية مضمّنة باعتباره SVG متجهيًا حقيقيًا.
-- تحديث دليل الاستخدام والصفحة الرئيسية وتوثيق حدود أدوات الصور الخارجية.
-
-
-## 2.0 — إصدار النشر العام
-
-- فصل المولّد عن الاستديو مع الحفاظ على صيغة الطلب الجماعي الناجحة من Studio 4.2.
-- إضافة أنماط الألوان والقوالب التعليمية وخيارات التعبير والهيئة.
-- توفير صفحة تعريف عربية، ودليل معلم، ودليل نشر، ونصوص إعلان، وأمثلة مرئية.
-- تجهيز ملفات GitHub Pages وREADME ورخصة MIT.
+## 2.1
+- Honest PNG, preferred SVG and strict vector SVG options.

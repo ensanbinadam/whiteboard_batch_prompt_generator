@@ -1,34 +1,16 @@
-# Whiteboard Batch Prompt Generator Pro
+# Educational Whiteboard Asset Prompt Generator — Simplified v2.3
 
-A free, Arabic-first, browser-based prompt generator for teachers to request multiple **separate whiteboard-style educational illustration assets** from an external AI image generation service.
+A free, open-source, static, Arabic-first tool for teachers. Enter one Arabic asset per line, adjust the style, and copy a batch prompt requesting **separate images** from an external image generator.
 
-- Strict batch prompt with Arabic asset names, numbered suggested filenames, ZIP delivery instructions and a quality checklist.
-- Individual prompts for providers that do not support batch output.
-- Classic monochrome, accent-color, soft-color and colorful educational styles.
-- Presets for classrooms, characters and vocabulary cards.
-- No server, dependencies, account or API key required for prompt composition.
-- Save and import JSON settings; export TXT prompts.
+- No imposed output filenames or scene numbers; the image tool may name downloads automatically.
+- No image organizer, built-in renderer, or required ZIP delivery.
+- Optional local saved group labels; they **never** appear in the image prompt.
+- Presets and controls for colors, transparent backgrounds, size, PNG, optional real vector SVG, WebP, expressions and shading.
+- Batch and single-asset prompts in Arabic or English.
+- TXT prompt export; works offline in a modern browser.
 
-**Run:** open `generator.html` locally, or publish the repository with GitHub Pages and visit `index.html`.
+Use [generator.html](generator.html) directly, or deploy [index.html](index.html) on GitHub Pages. See [Arabic teacher guide](guide.html).
 
-**Important:** This app generates **prompts, not images**. Actual number of files, naming, alpha transparency, ZIP and SVG support depend on the external image generator.
+The generator only writes prompts; actual image formats, alpha transparency, filenames, and separate-image delivery are controlled by the external image service. Browser localStorage can be cleared, removing locally saved groups.
 
-**License:** MIT for the code and original docs; see `LICENSE`. Example artwork is illustrative; check its originating generator's usage terms before redistributing separately.
-
-## File format modes
-
-- **PNG**: Lossless raster output, recommended for child-friendly colored assets and PowerPoint.
-- **SVG preferred, PNG fallback**: Requests editable vector paths where supported; otherwise uses an actual `.png` filename. Exactly one file per asset, not both.
-- **Strict vector SVG only**: Requires true editable vector geometry, not embedded bitmaps in an SVG wrapper. The generator should report inability when unavailable.
-- **WebP**: A raster format, not SVG.
-
-**Note:** This app generates text prompts only. It does not validate the actual output files from an external image model.
-
-
-## v2.2: saved groups and actual output naming
-
-- Create and switch between multiple groups saved locally in the same browser. Export/import all groups as a JSON backup. Browser storage is not cloud storage.
-- The legacy `scene_XX_asset_YY` prefix is an output naming convention, not a scene editor.
-- Prompt filenames are only requests to an external image generator, not guaranteed filenames.
-- Once image files exist, attach each one to the matching requested asset yourself. Download correctly renamed individual files or a genuine ZIP of attached assets. The file organizer never converts an image between formats or verifies visual subject identity.
-- Uploaded image bytes remain only in memory for the current page session. The local saved groups/JSON backups contain settings and item names, not images.
+Original code and documentation: MIT License. Example assets: check the originating image tool's terms.
