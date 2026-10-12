@@ -18,15 +18,33 @@
 .insan-credit-footer a:hover,.insan-credit-footer a:focus-visible{text-decoration:underline;text-underline-offset:3px}
 .insan-credit-footer .insan-credit-ai{margin-top:7px}
 .insan-credit-footer .insan-credit-license{margin-top:4px;font-size:11px;opacity:.78}
+
+/* v2.2 — independent saved-group library and output-file organizer; legacy prompt engine retained */
+#organizerPanel .assigned-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:11px;border:1px solid var(--edge);border-radius:10px;background:#fafdff}
+#organizerPanel .assigned-row .asset-data{flex:1;min-width:140px}
+#organizerPanel .assigned-row strong{font-size:13px;display:block}
+#organizerPanel .assigned-row code{display:block;direction:ltr;text-align:right;font-size:11px;color:#43617f;overflow-wrap:anywhere}
+#organizerPanel .assigned-row .file-help{font-size:11px;display:block;color:var(--muted)}
+#organizerPanel .assigned-row .file-buttons{display:flex;gap:6px;flex-wrap:wrap}
+#organizerPanel .assigned-row input[type=file]{max-width:190px;font-size:11px}
+#organizerPanel .file-warning{font-size:11px;color:#9a6110;margin-top:3px}
+#groupSaveStatus{line-height:1.65}
 </style>
 </head>
 <body>
-<header><div class="header"><div class="branding"><div class="symbol">✎</div><div><b>Whiteboard Batch Prompt Generator</b><small>مولّد الأصول الجماعية الاحترافي — صالح للنشر المجاني للمعلمين</small></div></div><div class="tools"><a class="header-btn" href="index.html" style="text-decoration:none;display:inline-flex;align-items:center;border-radius:9px;padding:9px 12px;border:1px solid #38536f;background:#243853;color:#fff;font-weight:700">⌂ الرئيسية</a><button class="header-btn" id="demoBtn">✦ مثال 4.2 الناجح</button><button class="header-btn" id="importBtn">فتح إعدادات JSON</button><button class="header-btn" id="resetBtn">مشروع جديد</button><input class="file-in" type="file" id="importFile" accept=".json,application/json"></div></div></header>
-<div class="container"><div class="heading"><div><h1>مولّد البرومبت الجماعي الاحترافي للعناصر المستقلة</h1><p>صياغة احترافية لتوليد عناصر تعليمية منفصلة بالذكاء الاصطناعي، مع خيارات موسعة مناسبة للنشر المجاني وللاستخدام التعليمي.</p></div><span class="tag">الإصدار 2.1 · صيغة الملفات الدقيقة</span></div>
+<header><div class="header"><div class="branding"><div class="symbol">✎</div><div><b>Whiteboard Batch Prompt Generator</b><small>مولّد الأصول الجماعية الاحترافي — صالح للنشر المجاني للمعلمين</small></div></div><div class="tools"><a class="header-btn" href="index.html" style="text-decoration:none;display:inline-flex;align-items:center;border-radius:9px;padding:9px 12px;border:1px solid #38536f;background:#243853;color:#fff;font-weight:700">⌂ الرئيسية</a><button class="header-btn" id="demoBtn">✦ مثال 4.2 الناجح</button><button class="header-btn" id="importBtn">استيراد إعدادات مجموعة واحدة</button><button class="header-btn" id="resetBtn">إعادة ضبط المجموعة</button><input class="file-in" type="file" id="importFile" accept=".json,application/json"></div></div></header>
+<div class="container"><div class="heading"><div><h1>مولّد البرومبت الجماعي الاحترافي للعناصر المستقلة</h1><p>صياغة احترافية لتوليد عناصر تعليمية منفصلة بالذكاء الاصطناعي، مع خيارات موسعة مناسبة للنشر المجاني وللاستخدام التعليمي.</p></div><span class="tag">الإصدار 2.2 · مجموعات محفوظة + تنظيم ملفات حقيقي</span></div>
 <div class="layout"><aside>
+<section class="panel"><div class="panel-head"><h2>٠ · مكتبتي: مجموعات حقيقية محفوظة</h2><span class="pill" id="groupsCount">—</span></div><div class="panel-content">
+<label class="field"><span>المجموعة الحالية (محفوظة محليًا)</span><select id="groupsSelect" aria-label="اختيار مجموعة محفوظة"></select></label>
+<div class="buttons"><button type="button" class="small primary" id="groupNew">+ مجموعة جديدة</button><button type="button" class="small" id="groupDuplicate">نسخ المجموعة</button><button type="button" class="small" id="groupDelete">حذف الحالية</button></div>
+<div class="buttons" style="margin-top:9px"><button type="button" class="small" id="groupsExport">حفظ كل المجموعات JSON</button><button type="button" class="small" id="groupsImport">استيراد مكتبة JSON</button></div>
+<input class="file-in" type="file" id="groupsImportFile" accept="application/json,.json">
+<div class="note" id="groupSaveStatus" role="status">يُحفظ اسم المجموعة وعناصرها وإعداداتها تلقائيًا في هذا المتصفح. انسخ المكتبة إلى JSON للاحتفاظ بنسخة احتياطية أو نقلها لجهاز آخر. الصور نفسها لا تُحفظ هنا.</div>
+</div></section>
 <section class="panel"><div class="panel-head"><h2>١ · قائمة العناصر المطلوبة</h2><span class="pill" id="count">0 عنصر</span></div><div class="panel-content">
-<label class="field"><span>عنوان المجموعة — للتنظيم فقط</span><input id="title" type="text" placeholder="رحلة المعرفة" value="عناصر تعليمية"></label>
-<div class="grid2"><label class="field"><span>رقم المجموعة / المشهد</span><input id="sceneNum" type="number" min="1" max="999" value="1"></label><label class="field"><span>لغة البرومبت</span><select id="promptLang"><option value="en">الإنجليزية (القالب الأصلي)</option><option value="ar">العربية</option></select></label></div>
+<label class="field"><span>اسم المجموعة — يُحفظ مع العناصر والإعدادات في هذا المتصفح</span><input id="title" type="text" placeholder="رحلة المعرفة" value="عناصر تعليمية"></label>
+<div class="grid2"><label class="field"><span>رقم المجموعة في أسماء الملفات (لا ينشئ مشهدًا)</span><input id="sceneNum" type="number" min="1" max="999" value="1"></label><label class="field"><span>لغة البرومبت</span><select id="promptLang"><option value="en">الإنجليزية (القالب الأصلي)</option><option value="ar">العربية</option></select></label></div>
 <label class="field"><span>جميع العناصر — عنصر في كل سطر</span><textarea id="items" class="items" placeholder="طفلة&#10;كرسي&#10;شجرة&#10;طائر بجناحيه في الهواء&#10;خيل" spellcheck="false"></textarea><p class="hint">اكتب الأسماء المطلوبة حرفيًا. لا يستخرج البرنامج كلمات ولا يقترح رسومات بديلة. استخدم سطرًا مستقلاً لكل عنصر.</p></label>
 <label class="field"><span>وصف سياق المجموعة (اختياري)</span><textarea id="context" rows="2" placeholder="مشهد تعليمي للأطفال في حديقة"></textarea><p class="hint">سياق للهيئة والاتساق فقط، ولا يسمح بإنشاء عناصر إضافية.</p></label>
 </div></section>
@@ -65,10 +83,16 @@
 <div id="warnings"></div><div class="tabs"><button class="active" id="tabBatch" type="button">برومبت جماعي صارم</button><button id="tabSingle" type="button">برومبت عنصر مستقل</button><button id="tabNames" type="button">أسماء الملفات</button></div>
 <div style="height:12px"></div><label class="field hidden" id="singleField"><span>العنصر المطلوب</span><select id="singleSelect"></select></label>
 <textarea id="output" class="output" spellcheck="false" readonly aria-label="البرومبت الجاهز"></textarea>
-<div style="height:12px"></div><div class="bar"><div class="buttons"><button class="primary" id="copyBtn">نسخ البرومبت</button><button id="txtBtn">تنزيل TXT</button></div><div class="buttons"><button id="manifestBtn">تنزيل قائمة JSON</button><button id="settingsBtn">حفظ الإعدادات JSON</button></div></div>
+<div style="height:12px"></div><div class="bar"><div class="buttons"><button class="primary" id="copyBtn">نسخ البرومبت</button><button id="txtBtn">تنزيل TXT</button></div><div class="buttons"><button id="manifestBtn">تنزيل قائمة JSON</button><button id="settingsBtn">حفظ إعدادات المجموعة JSON</button></div></div>
 </div></section>
 <section class="panel"><div class="panel-head"><h2>٤ · العناصر المنفصلة وأسماء ملفاتها</h2><small>مخطط أصول للتسليم من أداة الذكاء</small></div><div class="panel-content"><div class="asset-list" id="assetList"></div></div></section>
-<section class="panel"><div class="panel-head"><h2>طريقة الاستخدام</h2></div><div class="panel-content help">اكتب جميع العناصر في القائمة، ثم اختر القالب المناسب، وعدّل الألوان والخلفية والتعبير والهيئة وطريقة التسليم. انسخ البرومبت الجماعي إلى أداة توليد الصور، واطلب منها تسليم الملفات المستقلة. إذا كانت الأداة لا تستطيع التسليم الجماعي، استخدم تبويب «برومبت عنصر مستقل». بعد الحصول على الصور، أدرجها في PowerPoint وحركها بحرية.<hr class="sep">هذه النسخة موجهة للمعلمين والمعلمات وصناع المحتوى التعليمي. المولّد يصيغ الطلب ولا ينشئ الصور أو يتحقق آليًا من الملفات التي تنتجها خدمة خارجية؛ راجع الامتدادات الفعلية بنفسك.</div></section>
+<section class="panel" id="organizerPanel"><div class="panel-head"><h2>٥ · منظّم ملفات الصور الناتجة</h2><span class="pill" id="assignedCount">0/0</span></div><div class="panel-content">
+<p class="hint">البرومبت يقترح الأسماء، لكنه لا يستطيع إجبار ChatGPT أو غيره على استخدامها. بعد تنزيل الصور من أداة التوليد، اربط <strong>كل ملف بالعنصر الصحيح بنفسك</strong>، ثم نزّل ملفات مُعاد تسميتها أو حزمة ZIP فعلية. لا يغير هذا المنظم محتوى الصورة أو صيغتها.</p>
+<div class="note warn">الصور المرفقة تبقى في ذاكرة هذه الصفحة فقط حتى إغلاقها أو تحديثها؛ لا تُرسل إلى خادم ولا تدخل ملف إعدادات JSON. احفظ ملف ZIP قبل المغادرة.</div>
+<div class="asset-list" id="assignedList" style="margin-top:13px"></div>
+<div class="bar" style="margin-top:13px"><div class="buttons"><button id="zipRealBtn" class="primary" type="button" disabled>تنزيل ZIP بأسماء صحيحة</button><button id="clearAssignedBtn" type="button">إزالة الصور المرفقة</button></div><span class="hint" id="zipRealStatus">اربط صورة واحدة على الأقل.</span></div>
+</div></section>
+<section class="panel"><div class="panel-head"><h2>طريقة الاستخدام</h2></div><div class="panel-content help">اكتب جميع العناصر في القائمة، ثم اختر القالب المناسب، وعدّل الألوان والخلفية والتعبير والهيئة وطريقة التسليم. انسخ البرومبت الجماعي إلى أداة توليد الصور، واطلب منها تسليم الملفات المستقلة. إذا كانت الأداة لا تستطيع التسليم الجماعي، استخدم تبويب «برومبت عنصر مستقل». بعد الحصول على الصور، اربطها بالعناصر في «منظّم الملفات» لتحصل على ZIP بأسماء صحيحة، ثم أدرجها في PowerPoint. أسماء الملفات المقترحة في البرومبت لا تفرض التسمية على أداة الصور.<hr class="sep">هذه النسخة موجهة للمعلمين والمعلمات وصناع المحتوى التعليمي. المولّد يصيغ الطلب ولا ينشئ الصور أو يتحقق آليًا من الملفات التي تنتجها خدمة خارجية؛ راجع الامتدادات الفعلية بنفسك.</div></section>
 </main></div><footer class="insan-credit-footer" aria-label="حقوق المشروع وشكر المساهمين">
   <div style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px">المعلم المتقاعد/عبدالعزيز العبدالجبار</div>
   <div style="font-size: 0.9em; opacity: 0.7">جميع الحقوق محفوظة ©</div>
@@ -135,17 +159,85 @@ async function copyText(s){if(!s){notify('لا يوجد برومبت للنسخ'
 function download(name,content,mime='text/plain;charset=utf-8'){let blob=new Blob([content],{type:mime});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1800)}
 function safeName(s){return String(s||'assets').replace(/[^a-zA-Z0-9\u0600-\u06ff_-]+/g,'_').slice(0,75)}
 $('tabBatch').onclick=()=>{activeTab='batch';render()};$('tabSingle').onclick=()=>{activeTab='single';render()};$('tabNames').onclick=()=>{activeTab='names';render()};$('singleSelect').onchange=e=>{chosen=Number(e.target.value)||0;render()};
-$('copyBtn').onclick=()=>copyText($('output').value);$('txtBtn').onclick=()=>download(safeName(read().title)+'_'+activeTab+'_prompt.txt',$('output').value);$('manifestBtn').onclick=()=>download(safeName(read().title)+'_manifest.json',JSON.stringify(manifest(read()),null,2),'application/json;charset=utf-8');$('settingsBtn').onclick=()=>download('whiteboard_batch_settings.json',JSON.stringify({schema:'whiteboard-batch-generator-settings.v3',settings:read()},null,2),'application/json;charset=utf-8');
+$('copyBtn').onclick=()=>copyText($('output').value);$('txtBtn').onclick=()=>download(safeName(read().title)+'_'+activeTab+'_prompt.txt',$('output').value);$('manifestBtn').onclick=()=>download(safeName(read().title)+'_manifest.json',JSON.stringify(manifest(read()),null,2),'application/json;charset=utf-8');$('settingsBtn').onclick=()=>download(safeName(read().title)+'_settings.json',JSON.stringify({schema:'whiteboard-batch-generator-settings.v3',settings:read()},null,2),'application/json;charset=utf-8');
 $('demoBtn').onclick=()=>{if($('items').value.trim()&&!confirm('استبدال العناصر الحالية بعناصر المثال القديم الناجح؟'))return;apply({...read(),items:'طفلة\nكرسي\nشجرة\nطائر بجناحيه في هواء\nخيل',context:'',style:'classic',colorMode:'mono',background:'transparent',format:'svg',resolution:'2048',aspect:'1:1',spacing:'wide',fileMode:'zip',shading:'light',detail:'medium'});activeTab='batch';render();notify('تم إدخال مثال 4.2 بخمسة عناصر')};
 
 $('presetClassicBtn').onclick=()=>{apply({...read(),style:'classic',colorMode:'mono',palette:'pastel',background:'transparent',format:'svg',resolution:'2048',aspect:'1:1',spacing:'wide',shading:'light',detail:'medium',blackOutline:true,kids:false,audience:'general',expression:'auto',eyeState:'auto',viewpoint:'auto',pose:'auto',faceMode:'none',consistencyLevel:'strict',fileMode:'zip'});notify('تم تطبيق قالب كلاسيكي أبيض وأسود')};
 $('presetKidsBtn').onclick=()=>{apply({...read(),style:'classic',colorMode:'soft',palette:'educational',background:'transparent',format:'png',resolution:'2048',aspect:'1:1',spacing:'wide',shading:'light',detail:'medium',blackOutline:true,kids:true,audience:'children',expression:'cheerful',eyeState:'open',viewpoint:'front',pose:'auto',faceMode:'cute',consistencyLevel:'strict',fileMode:'zip'});notify('تم تطبيق قالب تعليمي ملوّن للأطفال')};
 $('presetCharsBtn').onclick=()=>{apply({...read(),style:'clean',colorMode:'soft',palette:'educational',background:'transparent',format:'png',resolution:'2048',aspect:'4:5',spacing:'wide',shading:'light',detail:'medium',blackOutline:true,kids:true,audience:'elementary',expression:'smile',eyeState:'open',viewpoint:'front',pose:'standing',faceMode:'none',consistencyLevel:'verystrict',fileMode:'zip'});notify('تم تطبيق قالب الشخصيات التعليمية')};
 $('presetCardsBtn').onclick=()=>{apply({...read(),style:'clean',colorMode:'full',palette:'bright',background:'transparent',format:'png',resolution:'2048',aspect:'1:1',spacing:'wide',shading:'light',detail:'medium',blackOutline:true,kids:true,audience:'preschool',expression:'cheerful',eyeState:'open',viewpoint:'front',pose:'auto',faceMode:'cute',consistencyLevel:'strict',fileMode:'separate'});notify('تم تطبيق قالب بطاقات المفردات')};
-$('resetBtn').onclick=()=>{if(!confirm('هل تريد بدء نموذج جديد؟'))return;activeTab='batch';chosen=0;apply(DEFAULTS);notify('تم بدء نموذج جديد')};
-$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{let file=e.target.files?.[0];if(!file)return;try{const obj=JSON.parse(await file.text()),data=obj.settings||obj;if(!data||typeof data!=='object'||typeof data.items!=='string')throw Error('invalid');apply({...DEFAULTS,...data});notify('تم تحميل الإعدادات')}catch{notify('ملف إعدادات غير متوافق')}finally{e.target.value=''}};
+$('resetBtn').onclick=()=>{if(!confirm('هل تريد إعادة ضبط إعدادات هذه المجموعة ومحو عناصرها؟'))return;activeTab='batch';chosen=0;apply(DEFAULTS);notify('تمت إعادة ضبط المجموعة الحالية')};
+$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{let file=e.target.files?.[0];if(!file)return;try{const obj=JSON.parse(await file.text()),data=obj.settings||obj;if(!data||typeof data!=='object'||typeof data.items!=='string')throw Error('invalid');apply({...DEFAULTS,...data});$('items').dispatchEvent(new Event('input',{bubbles:true}));notify('تم تحميل إعدادات المجموعة الحالية')}catch{notify('ملف إعدادات غير متوافق')}finally{e.target.value=''}};
 IDS.forEach(id=>{$(id).addEventListener('input',render);$(id).addEventListener('change',render)});
 try{let prior=localStorage.getItem('whiteboard-batch-generator-v2');apply(prior?{...DEFAULTS,...JSON.parse(prior)}:DEFAULTS)}catch{apply(DEFAULTS)}
 })();
+</script>
+<script>
+(()=>{'use strict';
+// Optional v2.2 enhancements: the stable v2.1.1 prompt generator above remains independent.
+const $=id=>document.getElementById(id);
+const IDS=['title','sceneNum','promptLang','items','context','style','colorMode','palette','accentColor','shading','detail','blackOutline','kids','audience','expression','eyeState','viewpoint','pose','faceMode','consistencyLevel','background','format','resolution','aspect','spacing','fileMode','strict','includeContext','noText','consistency','notes'];
+const LIB_KEY='wbp-project-library-v2.2';
+const DEFAULT_TITLE='مجموعة تعليمية جديدة';
+let groups=[],currentId='',loading=false,assigned=new Map(),fileStamp='';
+let seq=0;
+const uid=()=>`g_${Date.now().toString(36)}_${(++seq).toString(36)}`;
+const readSettings=()=>Object.fromEntries(IDS.map(id=>{const el=$(id);return [id,el.type==='checkbox'?el.checked:el.value]}));
+const safeName=s=>String(s||'assets').replace(/[^a-zA-Z0-9\u0600-\u06ff_-]+/g,'_').slice(0,70);
+function saveAs(filename,blob){const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),10000)}
+function message(s){$('groupSaveStatus').textContent=s;}
+function saveLibrary(){try{localStorage.setItem(LIB_KEY,JSON.stringify({schema:'wbp-local-groups-2.2',currentId,groups}));message(`حُفظت ${groups.length} مجموعة تلقائيًا في هذا المتصفح. احفظ نسخة احتياطية عبر «حفظ كل المجموعات JSON». الصور المرفقة لا تُحفظ.`)}catch{message('تعذّر الحفظ المحلي في هذا المتصفح. يُرجى تصدير المكتبة إلى JSON قبل إغلاق الصفحة.')}}
+function selected(){return groups.find(g=>g.id===currentId)}
+function renderSelector(){let s=$('groupsSelect');s.replaceChildren();for(const g of groups){const opt=document.createElement('option');opt.value=g.id;const number=String(g.settings.sceneNum||1).padStart(2,'0');opt.textContent=`${g.settings.title||'بلا اسم'} · ${number}`;s.append(opt)}s.value=currentId;$('groupsCount').textContent=groups.length===1?'مجموعة واحدة':groups.length===2?'مجموعتان':groups.length+' مجموعات'}
+function persistActive(){if(loading)return;const g=selected();if(!g)return;g.settings=readSettings();g.updatedAt=new Date().toISOString();saveLibrary();renderSelector();updateOrganizer();}
+function applyGroup(g){if(!g)return;loading=true;for(const id of IDS){const el=$(id);const v=g.settings[id];if(v===undefined)continue;if(el.type==='checkbox')el.checked=!!v;else el.value=String(v)}
+$('items').dispatchEvent(new Event('input',{bubbles:true}));loading=false;fileStamp='';assigned.clear();renderSelector();updateOrganizer();saveLibrary();}
+function switchGroup(id){if(id===currentId)return;const g=groups.find(x=>x.id===id);if(!g)return;currentId=id;applyGroup(g);}
+function createGroup(copy=false){const current=readSettings();const fresh=copy?{...current,title:`${current.title||DEFAULT_TITLE} - نسخة`}:{...current,title:DEFAULT_TITLE,items:'',context:'',notes:''};
+const nextNumber=Math.max(0,...groups.map(g=>Number(g.settings.sceneNum)||0))+1;fresh.sceneNum=String(Math.min(nextNumber,999));const g={id:uid(),settings:fresh,updatedAt:new Date().toISOString()};groups.push(g);currentId=g.id;applyGroup(g)}
+function initGroups(){try{const fromDisk=JSON.parse(localStorage.getItem(LIB_KEY)||'null');if(Array.isArray(fromDisk?.groups)&&fromDisk.groups.length){groups=fromDisk.groups.filter(x=>x?.id&&x.settings&&typeof x.settings.items==='string').slice(0,100);if(groups.length)currentId=groups.some(x=>x.id===fromDisk.currentId)?fromDisk.currentId:groups[0].id}}catch{}
+if(!groups.length){const saved=readSettings();groups=[{id:uid(),settings:saved,updatedAt:new Date().toISOString()}];currentId=groups[0].id}applyGroup(selected())}
+$('groupsSelect').addEventListener('change',e=>switchGroup(e.target.value));
+$('groupNew').onclick=()=>{if(groups.length>=100){alert('الحد الحالي 100 مجموعة. صدّر مكتبتك أولًا.');return}createGroup(false)};
+$('groupDuplicate').onclick=()=>{if(groups.length>=100){alert('الحد الحالي 100 مجموعة.');return}createGroup(true)};
+$('groupDelete').onclick=()=>{if(!confirm('حذف المجموعة الحالية المحفوظة من هذا المتصفح؟ يُنصح بتصدير نسخة احتياطية أولًا.'))return;groups=groups.filter(g=>g.id!==currentId);if(groups.length){currentId=groups[0].id;applyGroup(groups[0])}else{const g={id:uid(),settings:{...readSettings(),title:DEFAULT_TITLE,items:'',context:'',notes:''},updatedAt:new Date().toISOString()};groups=[g];currentId=g.id;applyGroup(g)}};
+$('groupsExport').onclick=()=>{persistActive();saveAs('whiteboard_all_groups_backup.json',new Blob([JSON.stringify({schema:'wbp-local-groups-2.2',exportedAt:new Date().toISOString(),currentId,groups},null,2)],{type:'application/json;charset=utf-8'}))};
+$('groupsImport').onclick=()=>$('groupsImportFile').click();
+$('groupsImportFile').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;try{if(file.size>2000000)throw Error('too large');const parsed=JSON.parse(await file.text());if(!Array.isArray(parsed.groups)||!parsed.groups.length||parsed.groups.length>100||!parsed.groups.every(x=>x.settings&&typeof x.settings.items==='string'))throw Error('not a group library');if(!confirm(`استيراد ${parsed.groups.length} مجموعة سيستبدل المكتبة المحلية الحالية. هل قمت بتصدير نسخة احتياطية؟`))return;
+groups=parsed.groups.map(g=>({id:uid(),settings:{...readSettings(),...g.settings},updatedAt:new Date().toISOString()}));const targetIndex=Math.max(0,parsed.groups.findIndex(g=>g.id===parsed.currentId));currentId=groups[targetIndex].id;applyGroup(selected());message('تم استيراد المجموعات وحفظها محليًا.')}catch{alert('تعذّر استيراد المكتبة. اختر ملف النسخة الاحتياطية الذي صدرته من زر «حفظ كل المجموعات JSON».')}finally{e.target.value=''}};
+// The legacy single-group JSON import still works and updates the active saved group via the existing input dispatch.
+document.addEventListener('input',e=>{if(IDS.includes(e.target?.id))persistActive()});
+document.addEventListener('change',e=>{if(IDS.includes(e.target?.id))persistActive()});
+// When the legacy preset/demo/reset buttons apply settings programmatically, read them after their synchronous handler.
+for(const id of ['demoBtn','resetBtn','presetClassicBtn','presetKidsBtn','presetCharsBtn','presetCardsBtn']){$(id).addEventListener('click',()=>setTimeout(persistActive,0))}
+$('importFile').addEventListener('change',()=>setTimeout(persistActive,100));
+
+function planned(){const a=readSettings();const seen=new Set();const names=a.items.split(/\r?\n/).map(x=>x.replace(/^\s*(?:\d+[.):-]|[-•*])\s*/u,'').trim()).filter(x=>x&&!seen.has(x)&&seen.add(x)).slice(0,60);const scene=String(Math.min(999,Math.max(1,Number(a.sceneNum)||1))).padStart(2,'0');return names.map((name,i)=>({name,base:`scene_${scene}_asset_${String(i+1).padStart(2,'0')}`,index:i+1}))}
+const enc=new TextEncoder();
+async function identify(file){const head=new Uint8Array(await file.slice(0,4096).arrayBuffer());
+ if(head.length>24&&[137,80,78,71,13,10,26,10].every((v,i)=>head[i]===v)){const color=head[25];return {ext:'png',label:'PNG',note:color===6||color===4?'قناة ألفا مدعومة في بنية الملف':'شفافية بكسلات الصورة غير مؤكدة'}};
+ if(head.length>12&&String.fromCharCode(...head.slice(0,4))==='RIFF'&&String.fromCharCode(...head.slice(8,12))==='WEBP')return {ext:'webp',label:'WebP',note:'الشفافية غير مفحوصة'};
+ if(head[0]===255&&head[1]===216&&head[2]===255)return {ext:'jpg',label:'JPEG',note:'JPEG لا يدعم الشفافية'};
+ const str=new TextDecoder().decode(head).replace(/^\uFEFF/,'').trimStart();if(/^(?:<\?xml\b[^>]*>\s*)?(?:<!--[\s\S]*?-->\s*)?<svg\b/i.test(str))return {ext:'svg',label:'SVG',note:/<image\b|data:image\//i.test(str)?'يحتوي على إشارة لصورة نقطية؛ تحقق من وجود متجهات حقيقية':'لا يكفي الامتداد وحده لضمان مسارات متجهية'};
+ return null}
+function clearAssignments(){assigned.clear();fileStamp='';updateOrganizer()}
+function updateOrganizer(){const list=planned(),signature=JSON.stringify(list.map(x=>x.name));if(fileStamp&&fileStamp!==signature){assigned.clear()}fileStamp=signature;
+const panel=$('assignedList');panel.replaceChildren();const fmt=$('format').value;list.forEach((item,i)=>{const entry=assigned.get(i),row=document.createElement('div');row.className='assigned-row';const mid=document.createElement('div');mid.className='asset-data';const name=document.createElement('strong');name.textContent=item.index+' · '+item.name;const code=document.createElement('code');code.textContent=item.base+'.'+(entry?.type.ext||(fmt==='svg_preferred'?'svg / png':fmt));const state=document.createElement('span');state.className='file-help';state.textContent=entry?`مرفق: ${entry.file.name} (${entry.type.label})`:'لا توجد صورة مرفقة لهذا العنصر';mid.append(name,code,state);if(entry?.type.note){const note=document.createElement('div');note.className='file-warning';note.textContent=entry.type.note;mid.append(note)}
+const controls=document.createElement('div');controls.className='file-buttons';const input=document.createElement('input');input.type='file';input.accept='.png,.svg,.webp,.jpg,.jpeg,image/png,image/svg+xml,image/webp,image/jpeg';input.setAttribute('aria-label','إرفاق صورة للعنصر '+item.name);input.onchange=async e=>{const f=e.target.files?.[0];if(!f)return;if(f.size>50000000){alert('الحد الأقصى للملف الواحد 50 ميجابايت.');input.value='';return}try{const type=await identify(f);if(!type){alert('صيغة الملف غير مدعومة أو لا تطابق محتواه.');return}assigned.set(i,{file:f,type});updateOrganizer()}catch{alert('تعذر فحص الملف.')}finally{input.value=''}};
+const rename=document.createElement('button');rename.type='button';rename.className='small';rename.textContent='تنزيل بالاسم الصحيح';rename.disabled=!entry;rename.onclick=()=>saveAs(item.base+'.'+entry.type.ext,entry.file);controls.append(input,rename);if(entry){const remove=document.createElement('button');remove.type='button';remove.className='small';remove.textContent='إزالة';remove.onclick=()=>{assigned.delete(i);updateOrganizer()};controls.append(remove)}row.append(mid,controls);panel.append(row)});
+const n=assigned.size;$('assignedCount').textContent=n+'/'+list.length;$('zipRealBtn').disabled=n===0;let missing=list.length-n;$('zipRealStatus').textContent=n===0?'اربط صورة واحدة على الأقل.':missing?`أُرفق ${n}، وبقي ${missing}. يمكن تنزيل ZIP جزئي بعد التأكيد.`:'اكتملت الملفات، جاهزة لتنزيل ZIP فعلي.';}
+$('clearAssignedBtn').onclick=()=>{if(assigned.size&& !confirm('إزالة جميع الصور المرفقة من الذاكرة؟'))return;clearAssignments()};
+// ZIP STORE (method 0) implementation, offline, no CDN dependency.
+const crcTable=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=(c&1)?0xedb88320^(c>>>1):c>>>1;crcTable[n]=c>>>0}
+function crc32(bytes){let c=0xffffffff;for(let i=0;i<bytes.length;i++)c=crcTable[(c^bytes[i])&255]^(c>>>8);return(c^0xffffffff)>>>0}
+function w16(v,o,n){v.setUint16(o,n,true)}function w32(v,o,n){v.setUint32(o,n>>>0,true)}
+async function zipFiles(entries){let size=0;const pieces=[],central=[];for(const entry of entries){const bytes=new Uint8Array(await entry.file.arrayBuffer());const name=enc.encode(entry.name);if(name.length>65535)throw Error('Filename too long');const crc=crc32(bytes);const offset=size;const local=new Uint8Array(30+name.length),v=new DataView(local.buffer);w32(v,0,0x04034b50);w16(v,4,20);w16(v,6,0x0800);w16(v,8,0);w32(v,14,crc);w32(v,18,bytes.length);w32(v,22,bytes.length);w16(v,26,name.length);local.set(name,30);pieces.push(local,bytes);size+=local.length+bytes.length;
+const hdr=new Uint8Array(46+name.length),h=new DataView(hdr.buffer);w32(h,0,0x02014b50);w16(h,4,20);w16(h,6,20);w16(h,8,0x0800);w16(h,10,0);w32(h,16,crc);w32(h,20,bytes.length);w32(h,24,bytes.length);w16(h,28,name.length);w32(h,42,offset);hdr.set(name,46);central.push(hdr)}
+const centralSize=central.reduce((acc,b)=>acc+b.length,0),end=new Uint8Array(22),d=new DataView(end.buffer);w32(d,0,0x06054b50);w16(d,8,entries.length);w16(d,10,entries.length);w32(d,12,centralSize);w32(d,16,size);return new Blob([...pieces,...central,end],{type:'application/zip'})}
+$('zipRealBtn').onclick=async()=>{const list=planned();const entries=list.flatMap((x,i)=>{const e=assigned.get(i);return e?[{file:e.file,name:x.base+'.'+e.type.ext}]:[]});if(!entries.length)return;if(entries.length!==list.length&&!confirm(`لديك ${entries.length} من أصل ${list.length} صور. هل تريد تنزيل ZIP جزئي بهذه الصور فقط؟`))return;
+const bytes=entries.reduce((sum,e)=>sum+e.file.size,0);if(bytes>150*1024*1024){alert('الحجم أكبر من 150 ميجابايت؛ قسم الملفات إلى مجموعات أصغر.');return}const btn=$('zipRealBtn');btn.disabled=true;btn.textContent='جارٍ تجهيز ZIP...';try{const result=await zipFiles(entries);saveAs(safeName($('title').value)+'_renamed_assets.zip',result);$('zipRealStatus').textContent='تم إنشاء حزمة ZIP من الملفات المرفقة، بامتداداتها الحقيقية.'}catch(e){console.error(e);alert('تعذر إنشاء ZIP. جرّب ملفات أصغر.')}finally{btn.textContent='تنزيل ZIP بأسماء صحيحة';btn.disabled=assigned.size===0}};
+initGroups();
+})();
+
 </script>
 </body></html>

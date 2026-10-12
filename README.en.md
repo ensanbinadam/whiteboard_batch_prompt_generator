@@ -23,3 +23,12 @@ A free, Arabic-first, browser-based prompt generator for teachers to request mul
 - **WebP**: A raster format, not SVG.
 
 **Note:** This app generates text prompts only. It does not validate the actual output files from an external image model.
+
+
+## v2.2: saved groups and actual output naming
+
+- Create and switch between multiple groups saved locally in the same browser. Export/import all groups as a JSON backup. Browser storage is not cloud storage.
+- The legacy `scene_XX_asset_YY` prefix is an output naming convention, not a scene editor.
+- Prompt filenames are only requests to an external image generator, not guaranteed filenames.
+- Once image files exist, attach each one to the matching requested asset yourself. Download correctly renamed individual files or a genuine ZIP of attached assets. The file organizer never converts an image between formats or verifies visual subject identity.
+- Uploaded image bytes remain only in memory for the current page session. The local saved groups/JSON backups contain settings and item names, not images.
