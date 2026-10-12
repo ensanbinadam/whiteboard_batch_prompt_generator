@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" role="img" aria-labelledby="title">
+<title id="title">مولد عناصر السبورة التعليمية</title>
+<rect width="180" height="180" rx="42" fill="#10243f"/>
+<rect x="33" y="31" width="113" height="99" rx="14" fill="#fff" stroke="#7bcce0" stroke-width="5"/>
+<path d="M53 58h50 M53 78h35 M53 99h26" stroke="#b4c5d8" stroke-linecap="round" stroke-width="8"/>
+<path d="M89 121 131 80l14 14-42 41-21 7z" fill="#ffc75c" stroke="#132c43" stroke-width="4" stroke-linejoin="round"/>
+<path d="m89 121-7 21 21-7" fill="#f7e9c4" stroke="#132c43" stroke-width="4"/>
+<path d="m131 80 6-6a6 6 0 0 1 9 0l7 7a6 6 0 0 1 0 9l-8 4" fill="#54bfb8" stroke="#132c43" stroke-width="4"/>
+<circle cx="139" cy="46" r="7" fill="#f9c56a"/>
+<path d="M138 24v10m17 10 10-5" stroke="#f9c56a" stroke-width="4" stroke-linecap="round"/>
+</svg>
