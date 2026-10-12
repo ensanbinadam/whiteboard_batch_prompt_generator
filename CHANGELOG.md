@@ -1,15 +1,6 @@
-# سجل التحديثات
-
-## 2.4.1 — النسخة المستقرة
-- إضافة نوع الأسلوب التعليمي: للأطفال، عام، بطاقات تعليمية، سبورة كلاسيكية.
-- إضافة درجة الالتزام الحرفي: عادي، صارم، صارم جدًا.
-- إضافة حيوية الألوان: هادئة، متوازنة، زاهية للأطفال.
-- إبراز خيار وجوه العناصر وخيار التفاصيل ضمن الواجهة الأساسية/المتقدمة دون إعادة تعقيد المولد.
-- الحفاظ على جميع الإنجازات السابقة: المجموعات المحلية، البرومبت الجماعي، برومبت العنصر الواحد، الشفافية، الصيغ، التذييل، ودعم العربية.
-
 # Changelog
 
-## 2.4.1 — Simplified teaching workflow
+## 2.3 — Simplified teaching workflow
 - Removed scene numbers and compulsory image filenames from the interface and prompts.
 - Removed output image organizer, ZIP-rename workflow, and JSON export controls.
 - Retained strict separate-asset batch requests and the optional single-item prompt.

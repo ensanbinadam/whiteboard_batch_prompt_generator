@@ -1,49 +1,824 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="theme-color" content="#10243f"/>
-<meta name="description" content="مولّد مجاني للمعلمين والمعلمات لصناعة برومبتات جماعية دقيقة تُخرج عناصر Whiteboard Animation مستقلة، بألوان وأساليب مناسبة لتعليم الأطفال."/>
-<title>مولّد عناصر السبورة التعليمية | Whiteboard Batch Prompt Generator Pro</title>
-<link rel="icon" href="assets/logo.svg" type="image/svg+xml"/>
-<style>
-:root{--navy:#10243f;--dark:#152c49;--ink:#19304c;--muted:#5f748b;--blue:#1c5fb9;--teal:#178b84;--border:#e0e8f2;--cream:#fff6e7;--paper:#fff;--bg:#f5f8fd}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.85 Tahoma,Arial,sans-serif}
-a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid #51babb;outline-offset:3px}button{font:inherit}img{max-width:100%;display:block}h1,h2,h3,p{margin-top:0}.container{max-width:1170px;margin:auto;padding-inline:25px}
-header{background:var(--navy);color:#fff}nav{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:88px;flex-wrap:wrap}.brand{display:flex;gap:12px;align-items:center}.brand img{width:47px;height:47px;border-radius:14px}.brand strong{display:block;font-size:17px;line-height:1.35}.brand small{display:block;color:#bbd1e3;font-size:11px}.navlinks{display:flex;gap:19px;align-items:center;flex-wrap:wrap;font-size:13px}.navlinks a:hover{color:#80e1d5}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:10px 19px;border-radius:12px;font-weight:800;font-size:14px;transition:transform .15s,background .15s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:#f9c45f;color:#1c2e44;box-shadow:0 7px 22px #e29e212e}.btn-secondary{border:1px solid #cedde8;background:white;color:#17447d}.btn-ghost{border:1px solid #5e7491;color:white}
-.hero{background:radial-gradient(circle at 88% 15%,#254b69 0,transparent 40%),linear-gradient(145deg,#10243f,#183a58);color:#fff;padding:76px 0 90px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:37px}.eyebrow{display:inline-flex;border:1px solid #64bdbe65;background:#84e8d312;border-radius:50px;color:#a5fff0;font-size:12px;padding:3px 14px;margin-bottom:19px;font-weight:800}.hero h1{font-size:clamp(30px,4vw,53px);line-height:1.35;letter-spacing:-.4px;margin:0 0 17px}.hero h1 span{color:#ffcf77}.hero p{color:#cddceb;font-size:16px;max-width:580px;margin:0 0 24px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.fine{font-size:12px;color:#c2d3e0;margin-top:17px}.hero-art{min-height:350px;position:relative;background:linear-gradient(125deg,#f8fbff,#eaf3f9);border-radius:26px;box-shadow:0 25px 58px #05122465;display:grid;grid-template-columns:repeat(3,1fr);align-items:center;gap:7px;padding:32px 22px;transform:rotate(-1.5deg)}.fruit{background:#fff;border-radius:17px;box-shadow:0 4px 12px #162d4713;min-height:138px;display:flex;justify-content:center;align-items:center;overflow:hidden}.fruit img{width:100%;height:145px;object-fit:contain}.fruit:nth-child(1){transform:rotate(4deg)}.fruit:nth-child(2){transform:rotate(-5deg)}.fruit:nth-child(3){transform:rotate(3deg)}.fruit:nth-child(4){transform:rotate(-4deg)}.fruit:nth-child(5){transform:rotate(4deg)}.hero-tag{position:absolute;bottom:-17px;left:22px;background:#fff6df;color:#71500c;padding:8px 16px;border-radius:40px;box-shadow:0 9px 17px #06152944;font-size:12px;font-weight:900}
-section.section{padding:75px 0}.section-head{text-align:center;max-width:730px;margin:0 auto 33px}.section-head small{color:#158a84;font-weight:900;font-size:12px}.section-head h2{font-size:clamp(24px,3vw,34px);line-height:1.4;margin:8px 0}.section-head p{color:var(--muted);font-size:15px;margin:0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:var(--paper);border:1px solid var(--border);padding:23px;border-radius:16px;box-shadow:0 3px 14px #263e5510}.card .num{display:grid;place-items:center;width:43px;height:43px;background:#e8f3fc;border-radius:12px;color:#1760ad;font-weight:900;margin-bottom:13px}.card h3{font-size:17px;margin:0 0 7px}.card p{color:var(--muted);font-size:13px;margin:0}.features{background:white}.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.feature{border:1px solid var(--border);border-radius:13px;padding:16px 18px;display:flex;align-items:start;gap:12px}.feature .check{color:#07877c;font-weight:900;font-size:18px}.feature strong{font-size:14px;display:block}.feature p{margin:3px 0 0;font-size:13px;color:var(--muted)}
-.demo-gallery{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.demo-gallery figure{margin:0;padding:12px;border-radius:15px;border:1px solid #e1e8ef;background:#fff;box-shadow:0 3px 13px #152d4310}.demo-gallery .demo-visual{aspect-ratio:1;background:radial-gradient(circle at 45% 40%,#fff,#eef6f9);border-radius:12px;display:grid;place-items:center;overflow:hidden}.demo-gallery img{width:100%;height:100%;object-fit:contain}.demo-gallery figcaption{font-size:12px;font-weight:900;text-align:center;padding-top:9px}.notice{background:#fffdf7;border:1px solid #f1dfbd;border-right:5px solid #e2a13b;padding:15px 19px;border-radius:11px;font-size:13px;color:#695022;margin-top:23px}.end-cta{background:#163754;color:#fff;border-radius:22px;padding:35px 42px;display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap}.end-cta h2{margin:0 0 4px;font-size:26px}.end-cta p{margin:0;color:#c7d9e9;font-size:14px}.links-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px}.links-row a{font-size:13px;color:#155aa5;text-decoration:underline;text-underline-offset:4px}
-footer{padding:28px 0;color:#b9c9da;background:#0e2038;text-align:center;font-size:12px}footer a{text-decoration:underline;text-underline-offset:3px}
-@media(max-width:950px){.hero-grid{grid-template-columns:1fr}.hero-art{max-width:530px;width:100%;margin:auto}.grid{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr}.demo-gallery{grid-template-columns:repeat(3,1fr)}.hero{padding:55px 0 75px}}
-@media(max-width:550px){nav{justify-content:center;padding-block:12px}.brand strong{font-size:14px}.navlinks{justify-content:center;gap:14px}.container{padding-inline:14px}.hero-art{min-height:230px;padding:16px 13px;gap:5px}.fruit{min-height:85px}.fruit img{height:95px}.hero-tag{bottom:-12px;left:8px}.hero p{font-size:14px}.hero-actions .btn{flex:1}.demo-gallery{grid-template-columns:repeat(2,1fr)}.end-cta{padding:23px}.end-cta h2{font-size:23px}}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#10243f" />
+    <meta
+      name="description"
+      content="مولّد مجاني للمعلمين والمعلمات لصناعة برومبتات جماعية دقيقة تُخرج عناصر Whiteboard Animation مستقلة، بألوان وأساليب مناسبة لتعليم الأطفال."
+    />
+    <title>
+      مولّد عناصر السبورة التعليمية | Whiteboard Batch Prompt Generator Pro
+    </title>
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        --navy: #10243f;
+        --dark: #152c49;
+        --ink: #19304c;
+        --muted: #5f748b;
+        --blue: #1c5fb9;
+        --teal: #178b84;
+        --border: #e0e8f2;
+        --cream: #fff6e7;
+        --paper: #fff;
+        --bg: #f5f8fd;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--bg);
+        font:
+          16px/1.85 Tahoma,
+          Arial,
+          sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      a:focus-visible {
+        outline: 3px solid #51babb;
+        outline-offset: 3px;
+      }
+      button {
+        font: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+      .container {
+        max-width: 1170px;
+        margin: auto;
+        padding-inline: 25px;
+      }
+      header {
+        background: var(--navy);
+        color: #fff;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        min-height: 88px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .brand img {
+        width: 47px;
+        height: 47px;
+        border-radius: 14px;
+      }
+      .brand strong {
+        display: block;
+        font-size: 17px;
+        line-height: 1.35;
+      }
+      .brand small {
+        display: block;
+        color: #bbd1e3;
+        font-size: 11px;
+      }
+      .navlinks {
+        display: flex;
+        gap: 19px;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 13px;
+      }
+      .navlinks a:hover {
+        color: #80e1d5;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 10px 19px;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 14px;
+        transition:
+          transform 0.15s,
+          background 0.15s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn-primary {
+        background: #f9c45f;
+        color: #1c2e44;
+        box-shadow: 0 7px 22px #e29e212e;
+      }
+      .btn-secondary {
+        border: 1px solid #cedde8;
+        background: white;
+        color: #17447d;
+      }
+      .btn-ghost {
+        border: 1px solid #5e7491;
+        color: white;
+      }
+      .hero {
+        background:
+          radial-gradient(circle at 88% 15%, #254b69 0, transparent 40%),
+          linear-gradient(145deg, #10243f, #183a58);
+        color: #fff;
+        padding: 76px 0 90px;
+        overflow: hidden;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 37px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        border: 1px solid #64bdbe65;
+        background: #84e8d312;
+        border-radius: 50px;
+        color: #a5fff0;
+        font-size: 12px;
+        padding: 3px 14px;
+        margin-bottom: 19px;
+        font-weight: 800;
+      }
+      .hero h1 {
+        font-size: clamp(30px, 4vw, 53px);
+        line-height: 1.35;
+        letter-spacing: -0.4px;
+        margin: 0 0 17px;
+      }
+      .hero h1 span {
+        color: #ffcf77;
+      }
+      .hero p {
+        color: #cddceb;
+        font-size: 16px;
+        max-width: 580px;
+        margin: 0 0 24px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .fine {
+        font-size: 12px;
+        color: #c2d3e0;
+        margin-top: 17px;
+      }
+      .hero-art {
+        min-height: 350px;
+        position: relative;
+        background: linear-gradient(125deg, #f8fbff, #eaf3f9);
+        border-radius: 26px;
+        box-shadow: 0 25px 58px #05122465;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        gap: 7px;
+        padding: 32px 22px;
+        transform: rotate(-1.5deg);
+      }
+      .fruit {
+        background: #fff;
+        border-radius: 17px;
+        box-shadow: 0 4px 12px #162d4713;
+        min-height: 138px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      .fruit img {
+        width: 100%;
+        height: 145px;
+        object-fit: contain;
+      }
+      .fruit:nth-child(1) {
+        transform: rotate(4deg);
+      }
+      .fruit:nth-child(2) {
+        transform: rotate(-5deg);
+      }
+      .fruit:nth-child(3) {
+        transform: rotate(3deg);
+      }
+      .fruit:nth-child(4) {
+        transform: rotate(-4deg);
+      }
+      .fruit:nth-child(5) {
+        transform: rotate(4deg);
+      }
+      .hero-tag {
+        position: absolute;
+        bottom: -17px;
+        left: 22px;
+        background: #fff6df;
+        color: #71500c;
+        padding: 8px 16px;
+        border-radius: 40px;
+        box-shadow: 0 9px 17px #06152944;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      section.section {
+        padding: 75px 0;
+      }
+      .section-head {
+        text-align: center;
+        max-width: 730px;
+        margin: 0 auto 33px;
+      }
+      .section-head small {
+        color: #158a84;
+        font-weight: 900;
+        font-size: 12px;
+      }
+      .section-head h2 {
+        font-size: clamp(24px, 3vw, 34px);
+        line-height: 1.4;
+        margin: 8px 0;
+      }
+      .section-head p {
+        color: var(--muted);
+        font-size: 15px;
+        margin: 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: var(--paper);
+        border: 1px solid var(--border);
+        padding: 23px;
+        border-radius: 16px;
+        box-shadow: 0 3px 14px #263e5510;
+      }
+      .card .num {
+        display: grid;
+        place-items: center;
+        width: 43px;
+        height: 43px;
+        background: #e8f3fc;
+        border-radius: 12px;
+        color: #1760ad;
+        font-weight: 900;
+        margin-bottom: 13px;
+      }
+      .card h3 {
+        font-size: 17px;
+        margin: 0 0 7px;
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 0;
+      }
+      .features {
+        background: white;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+      }
+      .feature {
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        padding: 16px 18px;
+        display: flex;
+        align-items: start;
+        gap: 12px;
+      }
+      .feature .check {
+        color: #07877c;
+        font-weight: 900;
+        font-size: 18px;
+      }
+      .feature strong {
+        font-size: 14px;
+        display: block;
+      }
+      .feature p {
+        margin: 3px 0 0;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .demo-gallery {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .demo-gallery figure {
+        margin: 0;
+        padding: 12px;
+        border-radius: 15px;
+        border: 1px solid #e1e8ef;
+        background: #fff;
+        box-shadow: 0 3px 13px #152d4310;
+      }
+      .demo-gallery .demo-visual {
+        aspect-ratio: 1;
+        background: radial-gradient(circle at 45% 40%, #fff, #eef6f9);
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+      .demo-gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .demo-gallery figcaption {
+        font-size: 12px;
+        font-weight: 900;
+        text-align: center;
+        padding-top: 9px;
+      }
+      .notice {
+        background: #fffdf7;
+        border: 1px solid #f1dfbd;
+        border-right: 5px solid #e2a13b;
+        padding: 15px 19px;
+        border-radius: 11px;
+        font-size: 13px;
+        color: #695022;
+        margin-top: 23px;
+      }
+      .end-cta {
+        background: #163754;
+        color: #fff;
+        border-radius: 22px;
+        padding: 35px 42px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+        flex-wrap: wrap;
+      }
+      .end-cta h2 {
+        margin: 0 0 4px;
+        font-size: 26px;
+      }
+      .end-cta p {
+        margin: 0;
+        color: #c7d9e9;
+        font-size: 14px;
+      }
+      .links-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 24px;
+      }
+      .links-row a {
+        font-size: 13px;
+        color: #155aa5;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      footer {
+        padding: 28px 0;
+        color: #b9c9da;
+        background: #0e2038;
+        text-align: center;
+        font-size: 12px;
+      }
+      footer a {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      @media (max-width: 950px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-art {
+          max-width: 530px;
+          width: 100%;
+          margin: auto;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+        .demo-gallery {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .hero {
+          padding: 55px 0 75px;
+        }
+      }
+      @media (max-width: 550px) {
+        nav {
+          justify-content: center;
+          padding-block: 12px;
+        }
+        .brand strong {
+          font-size: 14px;
+        }
+        .navlinks {
+          justify-content: center;
+          gap: 14px;
+        }
+        .container {
+          padding-inline: 14px;
+        }
+        .hero-art {
+          min-height: 230px;
+          padding: 16px 13px;
+          gap: 5px;
+        }
+        .fruit {
+          min-height: 85px;
+        }
+        .fruit img {
+          height: 95px;
+        }
+        .hero-tag {
+          bottom: -12px;
+          left: 8px;
+        }
+        .hero p {
+          font-size: 14px;
+        }
+        .hero-actions .btn {
+          flex: 1;
+        }
+        .demo-gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .end-cta {
+          padding: 23px;
+        }
+        .end-cta h2 {
+          font-size: 23px;
+        }
+      }
 
-/* v2.1.1 — credits only. No generator logic is changed. */
-.insan-credit-footer{box-sizing:border-box;text-align:center;padding:25px 15px 30px;line-height:2;border-top:1px solid rgba(128,152,172,.22);font-size:13px;clear:both}
-.insan-credit-footer a{color:inherit;text-decoration:none}
-.insan-credit-footer a:hover,.insan-credit-footer a:focus-visible{text-decoration:underline;text-underline-offset:3px}
-.insan-credit-footer .insan-credit-ai{margin-top:7px}
-.insan-credit-footer .insan-credit-license{margin-top:4px;font-size:11px;opacity:.78}
-</style>
-</head>
-<body>
-<header><div class="container"><nav aria-label="التنقل الرئيسي"><a class="brand" href="index.html"><img src="assets/logo.svg" alt="شعار المشروع"/><span><strong>مولّد عناصر السبورة التعليمية</strong><small>Whiteboard Batch Prompt Generator Pro</small></span></a><div class="navlinks"><a href="#how">كيف يعمل؟</a><a href="#features">المميزات</a><a href="#examples">الأمثلة</a><a href="guide.html">دليل المعلم</a></div></nav></div></header>
-<main>
-<section class="hero"><div class="container hero-grid"><div><span class="eyebrow">أداة مجانية • عربية • دون تثبيت</span><h1>من فكرة الدرس إلى <span>عناصر تعليمية جاهزة</span></h1><p>اكتب أسماء العناصر التي تحتاجها في سطور منفصلة، واختر أسلوب الرسم والألوان، واحصل على برومبت جماعي دقيق تطلب به من الذكاء الاصطناعي ملفات صور مستقلة لتستخدمها في PowerPoint والدروس التفاعلية.</p><div class="hero-actions"><a class="btn btn-primary" href="generator.html">✦ افتح المولّد الآن</a><a class="btn btn-ghost" href="#how">تعرّف على الطريقة</a></div><div class="fine">يعمل المولد على جهازك مباشرة، ولا يرسل بياناتك إلى خادم. التوليد الفعلي للصور يتم في أداة الذكاء الاصطناعي التي تختارها.</div></div><div class="hero-art" aria-label="أمثلة صور تعليمية منفصلة للفواكه"><div class="fruit"><img src="assets/apple.webp" alt="تفاحة مرحة"/></div><div class="fruit"><img src="assets/orange.webp" alt="برتقالة مرحة"/></div><div class="fruit"><img src="assets/banana.webp" alt="موزة مرحة"/></div><div class="fruit"><img src="assets/pear.webp" alt="كمثرى مرحة"/></div><div class="fruit"><img src="assets/grapes.webp" alt="عنب مرح"/></div><span class="hero-tag">5 عناصر مستقلة في طلب واحد</span></div></div></section>
-<section class="section" id="how"><div class="container"><div class="section-head"><small>ثلاث خطوات</small><h2>طريقة استخدام سهلة للمعلمين والمعلمات</h2><p>المولّد ينظّم طلب الصور، وأداة الذكاء الاصطناعي تنشئها، وPowerPoint يساعدك على تحريكها.</p></div><div class="grid"><article class="card"><div class="num">١</div><h3>حدد عناصر درسك</h3><p>اكتب: تفاحة، موزة، كمثرى... كل عنصر في سطر. يمكنك اختيار قالب جاهز، أو التحكم في الألوان والملامح والمقاس.</p></article><article class="card"><div class="num">٢</div><h3>انسخ البرومبت الجماعي</h3><p>اضغط «نسخ البرومبت»، ثم أرسله لأداة صور تدعم إخراج صور منفصلة. يوجد خيار لتوليد عنصر واحد عند الحاجة.</p></article><article class="card"><div class="num">٣</div><h3>استخدم العناصر في الدرس</h3><p>بعد تنزيل الصور، أدرجها في PowerPoint أو في أدواتك التعليمية، ورتبها على الشرائح وحرّكها بالطريقة التي تناسب شرحك.</p></article></div></div></section>
-<section class="section features" id="features"><div class="container"><div class="section-head"><small>مصمم للتعليم</small><h2>خيارات الرسم الضرورية دون تعقيد</h2><p>كل الأدوات تركز على صياغة برومبتات مستقلة وواضحة، لا على تحرير الصور داخل الصفحة.</p></div><div class="feature-grid"><div class="feature"><span class="check">✓</span><div><strong>توليد جماعي بأسماء عربية حرفية</strong><p>قائمة مرقمة تحفظ الأسماء العربية كما هي، وقواعد تمنع دمج الصور أو استبدال العناصر.</p></div></div><div class="feature"><span class="check">✓</span><div><strong>أربعة أوضاع للألوان</strong><p>أبيض وأسود، لون إبراز واحد، ألوان هادئة، وألوان مبهجة مناسبة للأطفال.</p></div></div><div class="feature"><span class="check">✓</span><div><strong>قوالب تعليمية جاهزة</strong><p>الأبيض والأسود، الألوان التعليمية، وإعدادات جاهزة للشخصيات.</p></div></div><div class="feature"><span class="check">✓</span><div><strong>تحكم في التعبير والهيئة</strong><p>الابتسامة، العينان، زاوية الرسم، الوضعية، والوجوه الكرتونية للأشياء.</p></div></div><div class="feature"><span class="check">✓</span><div><strong>خيارات للصيغة والشفافية</strong><p>PNG أو SVG عند دعم أداة الصور، مع هوامش آمنة وصور منفصلة.</p></div></div><div class="feature"><span class="check">✓</span><div><strong>حفظ الإعدادات وإعادة فتحها</strong><p>اسم مجموعة اختياري مع حفظ محلي بسيط، وبرومبت جماعي وآخر لعنصر واحد. لا حاجة إلى إنشاء مشاهد أو إدارة ملفات.</p></div></div></div></div></section>
-<div class="container"><p style="background:#eff6ff;padding:12px 16px;border-radius:12px;font-size:13px;line-height:1.8"><strong>النسخة المستقرة 2.4.1:</strong> اكتب أسماء العناصر، واختر شكلها، وانسخ برومبتًا يطلب صورًا مستقلة دون فرض أسماء ملفات أو إنشاء مشاهد. تنظيم المجموعات اختياري ومحلي. تبقى خيارات PNG وSVG واللون والتعبير الفني متاحة، بينما تصنع الصور أداة الذكاء الاصطناعي الخارجية.</p></div><section class="section" id="examples"><div class="container"><div class="section-head"><small>نتائج نموذجية</small><h2>مجموعة الفواكه التعليمية</h2><p>أمثلة من اختبار حقيقي لبرومبت جماعي ملوّن: كل صورة تمثل عنصرًا مستقلًا بخلفية شفافة.</p></div><div class="demo-gallery"><figure><div class="demo-visual"><img src="assets/apple.webp" loading="lazy" alt="رسم تفاحة مرحة"/></div><figcaption>تفاحة</figcaption></figure><figure><div class="demo-visual"><img src="assets/orange.webp" loading="lazy" alt="رسم برتقالة مرحة"/></div><figcaption>برتقالة</figcaption></figure><figure><div class="demo-visual"><img src="assets/banana.webp" loading="lazy" alt="رسم موزة مرحة"/></div><figcaption>موزة</figcaption></figure><figure><div class="demo-visual"><img src="assets/pear.webp" loading="lazy" alt="رسم كمثرى مرحة"/></div><figcaption>كمثرى</figcaption></figure><figure><div class="demo-visual"><img src="assets/grapes.webp" loading="lazy" alt="رسم عنب مرح"/></div><figcaption>عنب</figcaption></figure></div><div class="notice"><strong>مهم:</strong> هذا البرنامج لا يولّد الصور بنفسه ولا يعيد تسمية ملفاتها. يكتب البرومبتات فقط، ويمكنك حفظ اسم مجموعة وعناصرها محليًا داخل متصفحك. أسماء الصور تأتي من أداة توليد الصور، ومدى التزامها بالفصل والشفافية وSVG يعتمد على إمكاناتها.</div></div></section>
-<section class="section" id="start"><div class="container"><div class="end-cta"><div><h2>جاهز لبناء مكتبتك التعليمية؟</h2><p>أداة مجانية ومفتوحة المصدر — ابدأ من متصفحك دون حساب أو تنزيل برامج إضافية.</p></div><a class="btn btn-primary" href="generator.html">ابدأ إنشاء البرومبتات ←</a></div><div class="links-row"><a href="guide.html">دليل المعلمين</a><a href="publish.html">دليل نشر GitHub Pages</a><a href="guide.html">دليل المشروع</a><a href="LICENSE">الرخصة المفتوحة MIT</a></div></div></section>
-</main><footer class="insan-credit-footer" aria-label="حقوق المشروع وشكر المساهمين">
-  <div style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px">المعلم المتقاعد/عبدالعزيز العبدالجبار</div>
-        <div style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px">
+      /* v2.1.1 — credits only. No generator logic is changed. */
+      .insan-credit-footer {
+        box-sizing: border-box;
+        text-align: center;
+        padding: 25px 15px 30px;
+        line-height: 2;
+        border-top: 1px solid rgba(128, 152, 172, 0.22);
+        font-size: 13px;
+        clear: both;
+      }
+      .insan-credit-footer a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .insan-credit-footer a:hover,
+      .insan-credit-footer a:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .insan-credit-footer .insan-credit-ai {
+        margin-top: 7px;
+      }
+      .insan-credit-footer .insan-credit-license {
+        margin-top: 4px;
+        font-size: 11px;
+        opacity: 0.78;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav aria-label="التنقل الرئيسي">
+          <a class="brand" href="index.html"
+            ><img src="assets/logo.svg" alt="شعار المشروع" /><span
+              ><strong>مولّد عناصر السبورة التعليمية</strong
+              ><small>Whiteboard Batch Prompt Generator Pro</small></span
+            ></a
+          >
+          <div class="navlinks">
+            <a href="#how">كيف يعمل؟</a><a href="#features">المميزات</a
+            ><a href="#examples">الأمثلة</a><a href="guide.html">دليل المعلم</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">أداة مجانية • عربية • دون تثبيت</span>
+            <h1>من فكرة الدرس إلى <span>عناصر تعليمية جاهزة</span></h1>
+            <p>
+              اكتب أسماء العناصر التي تحتاجها في سطور منفصلة، واختر أسلوب الرسم
+              والألوان، واحصل على برومبت جماعي دقيق تطلب به من الذكاء الاصطناعي
+              ملفات صور مستقلة لتستخدمها في PowerPoint والدروس التفاعلية.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="generator.html"
+                >✦ افتح المولّد الآن</a
+              ><a class="btn btn-ghost" href="#how">تعرّف على الطريقة</a>
+            </div>
+            <div class="fine">
+              يعمل المولد على جهازك مباشرة، ولا يرسل بياناتك إلى خادم. التوليد
+              الفعلي للصور يتم في أداة الذكاء الاصطناعي التي تختارها.
+            </div>
+          </div>
+          <div class="hero-art" aria-label="أمثلة صور تعليمية منفصلة للفواكه">
+            <div class="fruit">
+              <img src="assets/apple.webp" alt="تفاحة مرحة" />
+            </div>
+            <div class="fruit">
+              <img src="assets/orange.webp" alt="برتقالة مرحة" />
+            </div>
+            <div class="fruit">
+              <img src="assets/banana.webp" alt="موزة مرحة" />
+            </div>
+            <div class="fruit">
+              <img src="assets/pear.webp" alt="كمثرى مرحة" />
+            </div>
+            <div class="fruit">
+              <img src="assets/grapes.webp" alt="عنب مرح" />
+            </div>
+            <span class="hero-tag">5 عناصر مستقلة في طلب واحد</span>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="how">
+        <div class="container">
+          <div class="section-head">
+            <small>ثلاث خطوات</small>
+            <h2>طريقة استخدام سهلة للمعلمين والمعلمات</h2>
+            <p>
+              المولّد ينظّم طلب الصور، وأداة الذكاء الاصطناعي تنشئها،
+              وPowerPoint يساعدك على تحريكها.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <div class="num">١</div>
+              <h3>حدد عناصر درسك</h3>
+              <p>
+                اكتب: تفاحة، موزة، كمثرى... كل عنصر في سطر. يمكنك اختيار قالب
+                جاهز، أو التحكم في الألوان والملامح والمقاس.
+              </p>
+            </article>
+            <article class="card">
+              <div class="num">٢</div>
+              <h3>انسخ البرومبت الجماعي</h3>
+              <p>
+                اضغط «نسخ البرومبت»، ثم أرسله لأداة صور تدعم إخراج صور منفصلة.
+                يوجد خيار لتوليد عنصر واحد عند الحاجة.
+              </p>
+            </article>
+            <article class="card">
+              <div class="num">٣</div>
+              <h3>استخدم العناصر في الدرس</h3>
+              <p>
+                بعد تنزيل الصور، أدرجها في PowerPoint أو في أدواتك التعليمية،
+                ورتبها على الشرائح وحرّكها بالطريقة التي تناسب شرحك.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section features" id="features">
+        <div class="container">
+          <div class="section-head">
+            <small>مصمم للتعليم</small>
+            <h2>خيارات الرسم الضرورية دون تعقيد</h2>
+            <p>
+              كل الأدوات تركز على صياغة برومبتات مستقلة وواضحة، لا على تحرير
+              الصور داخل الصفحة.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <div class="feature">
+              <span class="check">✓</span>
+              <div>
+                <strong>توليد جماعي بأسماء عربية حرفية</strong>
+                <p>
+                  قائمة مرقمة تحفظ الأسماء العربية كما هي، وقواعد تمنع دمج الصور
+                  أو استبدال العناصر.
+                </p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="check">✓</span>
+              <div>
+                <strong>أربعة أوضاع للألوان</strong>
+                <p>
+                  أبيض وأسود، لون إبراز واحد، ألوان هادئة، وألوان مبهجة مناسبة
+                  للأطفال.
+                </p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="check">✓</span>
+              <div>
+                <strong>قوالب تعليمية جاهزة</strong>
+                <p>
+                  الأبيض والأسود، الألوان التعليمية، وإعدادات جاهزة للشخصيات.
+                </p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="check">✓</span>
+              <div>
+                <strong>تحكم في التعبير والهيئة</strong>
+                <p>
+                  الابتسامة، العينان، زاوية الرسم، الوضعية، والوجوه الكرتونية
+                  للأشياء.
+                </p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="check">✓</span>
+              <div>
+                <strong>خيارات للصيغة والشفافية</strong>
+                <p>PNG أو SVG عند دعم أداة الصور، مع هوامش آمنة وصور منفصلة.</p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="check">✓</span>
+              <div>
+                <strong>حفظ الإعدادات وإعادة فتحها</strong>
+                <p>
+                  اسم مجموعة اختياري مع حفظ محلي بسيط، وبرومبت جماعي وآخر لعنصر
+                  واحد. لا حاجة إلى إنشاء مشاهد أو إدارة ملفات.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <p
+          style="
+            background: #eff6ff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.8;
+          "
+        >
+          <strong>الإصدار المبسّط 2.3:</strong> اكتب أسماء العناصر، واختر شكلها،
+          وانسخ برومبتًا يطلب صورًا مستقلة دون فرض أسماء ملفات أو إنشاء مشاهد.
+          تنظيم المجموعات اختياري ومحلي. تبقى خيارات PNG وSVG واللون والتعبير
+          الفني متاحة، بينما تصنع الصور أداة الذكاء الاصطناعي الخارجية.
+        </p>
+      </div>
+      <section class="section" id="examples">
+        <div class="container">
+          <div class="section-head">
+            <small>نتائج نموذجية</small>
+            <h2>مجموعة الفواكه التعليمية</h2>
+            <p>
+              أمثلة من اختبار حقيقي لبرومبت جماعي ملوّن: كل صورة تمثل عنصرًا
+              مستقلًا بخلفية شفافة.
+            </p>
+          </div>
+          <div class="demo-gallery">
+            <figure>
+              <div class="demo-visual">
+                <img
+                  src="assets/apple.webp"
+                  loading="lazy"
+                  alt="رسم تفاحة مرحة"
+                />
+              </div>
+              <figcaption>تفاحة</figcaption>
+            </figure>
+            <figure>
+              <div class="demo-visual">
+                <img
+                  src="assets/orange.webp"
+                  loading="lazy"
+                  alt="رسم برتقالة مرحة"
+                />
+              </div>
+              <figcaption>برتقالة</figcaption>
+            </figure>
+            <figure>
+              <div class="demo-visual">
+                <img
+                  src="assets/banana.webp"
+                  loading="lazy"
+                  alt="رسم موزة مرحة"
+                />
+              </div>
+              <figcaption>موزة</figcaption>
+            </figure>
+            <figure>
+              <div class="demo-visual">
+                <img
+                  src="assets/pear.webp"
+                  loading="lazy"
+                  alt="رسم كمثرى مرحة"
+                />
+              </div>
+              <figcaption>كمثرى</figcaption>
+            </figure>
+            <figure>
+              <div class="demo-visual">
+                <img
+                  src="assets/grapes.webp"
+                  loading="lazy"
+                  alt="رسم عنب مرح"
+                />
+              </div>
+              <figcaption>عنب</figcaption>
+            </figure>
+          </div>
+          <div class="notice">
+            <strong>مهم:</strong> هذا البرنامج لا يولّد الصور بنفسه ولا يعيد
+            تسمية ملفاتها. يكتب البرومبتات فقط، ويمكنك حفظ اسم مجموعة وعناصرها
+            محليًا داخل متصفحك. أسماء الصور تأتي من أداة توليد الصور، ومدى
+            التزامها بالفصل والشفافية وSVG يعتمد على إمكاناتها.
+          </div>
+        </div>
+      </section>
+      <section class="section" id="start">
+        <div class="container">
+          <div class="end-cta">
+            <div>
+              <h2>جاهز لبناء مكتبتك التعليمية؟</h2>
+              <p>
+                أداة مجانية ومفتوحة المصدر — ابدأ من متصفحك دون حساب أو تنزيل
+                برامج إضافية.
+              </p>
+            </div>
+            <a class="btn btn-primary" href="generator.html"
+              >ابدأ إنشاء البرومبتات ←</a
+            >
+          </div>
+          <div class="links-row">
+            <a href="guide.html">دليل المعلمين</a
+            ><a href="publish.html">دليل نشر GitHub Pages</a
+            ><a href="guide.html">دليل المشروع</a
+            ><a href="LICENSE">الرخصة المفتوحة MIT</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="insan-credit-footer"
+      aria-label="حقوق المشروع وشكر المساهمين"
+    >
+      <div style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px">
+        المعلم المتقاعد/عبدالعزيز العبدالجبار
+      </div>
+      <div style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px">
         "أوقفت ثوابه لمن أحسن إلي مع دعائي له"
       </div>
-  <div style="font-size: 0.9em; opacity: 0.7">جميع الحقوق محفوظة ©</div>
-  <a href="https://t.me/Insan_Notebook" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit">Insan_Notebook|كشكول_إنسان</a>
-  <div class="insan-credit-ai">البرمجة والتطوير بمساعدة <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="زيارة ChatGPT">ChatGPT</a></div>
-  <div class="insan-credit-license">المشروع متاح للاستخدام والمشاركة وفق <a href="LICENSE">رخصة MIT</a>.</div>
-</footer>
-</body></html>
+      <div style="font-size: 0.9em; opacity: 0.7">جميع الحقوق محفوظة ©</div>
+      <a
+        href="https://t.me/Insan_Notebook"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="text-decoration: none; color: inherit"
+        >Insan_Notebook|كشكول_إنسان</a
+      >
+      <div class="insan-credit-ai">
+        البرمجة والتطوير بمساعدة
+        <a
+          href="https://chatgpt.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="زيارة ChatGPT"
+          >ChatGPT</a
+        >
+      </div>
+      <div class="insan-credit-license">
+        المشروع متاح للاستخدام والمشاركة وفق <a href="LICENSE">رخصة MIT</a>.
+      </div>
+    </footer>
+  </body>
+</html>
