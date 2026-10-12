@@ -1,4 +1,4 @@
-# Educational Whiteboard Asset Prompt Generator — Simplified v2.4
+# Educational Whiteboard Asset Prompt Generator — Simplified v2.4.1
 
 A free, open-source, static, Arabic-first tool for teachers. Enter one Arabic asset per line, adjust the style, and copy a batch prompt requesting **separate images** from an external image generator.
 

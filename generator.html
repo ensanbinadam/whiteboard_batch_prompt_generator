@@ -11,9 +11,9 @@
 </style>
 </head>
 <body>
-<header><div class="inner"><div><strong>✎ مولّد عناصر السبورة التعليمية</strong><small>Whiteboard Batch Prompt Generator — Stable Edition for Teachers</small></div><a href="index.html">⌂ الصفحة الرئيسية</a></div></header>
+<header><div class="inner"><div><strong>✎ مولّد عناصر السبورة التعليمية</strong><small>Whiteboard Batch Prompt Generator — Stable Edition 2.4.1 for Teachers</small></div><a href="index.html">⌂ الصفحة الرئيسية</a></div></header>
 <div class="container">
-<div class="intro"><div><h1>أنشئ برومبتًا لصور تعليمية منفصلة</h1><p>اكتب العناصر، اختر الجودة البصرية، ثم انسخ البرومبت. نسخة مستقرة ومبسطة مع تحكمات احترافية مفيدة فقط.</p></div><span class="tag">نسخة مستقرة 2.4</span></div>
+<div class="intro"><div><h1>أنشئ برومبتًا لصور تعليمية منفصلة</h1><p>اكتب العناصر، اختر الجودة البصرية، ثم انسخ البرومبت. نسخة مستقرة ومبسطة مع تحكمات احترافية مفيدة فقط.</p></div><span class="tag">نسخة مستقرة 2.4.1</span></div>
 <div class="layout"><aside>
 <section class="panel"><div class="head"><h2>١ · ما العناصر التي تحتاجها؟</h2><span class="status" id="itemCount">0 عنصر</span></div><div class="body">
 <label class="field"><span>أسماء العناصر — عنصر واحد في كل سطر</span><textarea id="items" spellcheck="false" placeholder="سبورة مدرسية&#10;أقلام سبورة&#10;معداد حسابي&#10;ميزان ذو الكفتين"></textarea></label>
@@ -84,7 +84,60 @@ function formatEN(a){if(a.format==='svg')return 'Return actual standalone vector
 function formatAR(a){if(a.format==='svg')return 'سلّم SVG متجهيًا حقيقيًا يحتوي على أشكال ومسارات قابلة للتحرير؛ لا تقبل PNG مضمّنة داخل SVG، وإذا تعذر ذلك فأبلغ عن عدم القدرة دون ادعاء أن الملف متجهي.';if(a.format==='svg_preferred')return 'فضّل SVG متجهيًا حقيقيًا، وإذا تعذر فاقبل PNG فعلية مع تحديد صيغتها؛ لا تسمِّ الصورة النقطية SVG.';if(a.format==='webp')return 'اطلب ملفات WebP مستقلة بصيغتها الحقيقية.';return 'اطلب ملفات PNG مستقلة غير فاقدة للجودة، بقناة ألفا حقيقية عند اختيار الشفافية.'}
 function negativeEN(a){const list=['collage','contact sheet','sprite sheet','storyboard','combined scene','interwoven objects','extra people','incorrect object substitutions','unrequested props','cropped object','photo','3D','complex scenery','heavy shadows','text','letters','logo','watermark'];if(a.colorMode==='mono')list.push('colored fills','colored accents');if(a.colorMode==='soft')list.push('neon colors','harsh saturation');if(a.colorMode==='accent')list.push('additional accent colors','rainbow fills');return list.join(', ')+'.'}
 function negativeAR(a){const list=['صورة مجمعة','كولاج','ورقة صور مصغرة','مشهد واحد يجمع العناصر','أشياء زائدة','عناصر بديلة','قص أطراف العنصر','صورة فوتوغرافية','ثلاثي الأبعاد','خلفيات معقدة','ظلال ثقيلة','كتابة','حروف','شعار','علامة مائية'];if(a.colorMode==='mono')list.push('ألوان');if(a.colorMode==='soft')list.push('ألوان نيون','تشبع حاد');if(a.colorMode==='accent')list.push('ألوان إبراز إضافية');return list.join('، ')+'.'}
-function promptFor(a,subjects,individual){if(!subjects.length)return '';const cnt=subjects.length,margin={wide:'12%',medium:'8%',tight:'5%'}[a.spacing],ctx=a.context.trim(),note=a.notes.trim();if(a.promptLang==='ar')return [individual?'WHITEBOARD ANIMATION — طلب صورة مستقلة':'WHITEBOARD ANIMATION — طلب جماعي لصور تعليمية منفصلة','',`أنشئ ${cnt} ${cnt===1?'صورة تعليمية مستقلة':'صور تعليمية مستقلة'} بالضبط، بحيث تحتوي كل صورة على عنصر واحد فقط. لا تنتج لوحة مجمّعة أو صورة فيها جميع العناصر.`,'','العناصر المطلوبة بأسمائها العربية دون استبدال أو تعديل:',...subjects.map((s,i)=>`${i+1}. ${s}`),'','مواصفات الرسم:',`- الأسلوب: ${look.style[a.style]}. ${colorsAR(a)}`,`- التظليل: ${a.shading==='light'?'تهشير خفيف جدًا':a.shading==='medium'?'تهشير متوسط':'دون تظليل'}.`,`- الخلفية: ${a.background==='transparent'?'شفافية حقيقية بقناة ألفا دون خلفية مرسومة':'بيضاء صافية'}.`,`- الحجم المستهدف: ${dimension(a)} بكسل (${a.aspect}) لكل صورة، مع هامش أمان ${margin}.`,`- التفاصيل: ${a.detail}.`,`- الصيغة: ${formatAR(a)}`,`- التوجيه البصري: ${directionAR(a)}`,'- اتساق واحد في الألوان وسماكة الحدود والمنظور والأسلوب عبر جميع الصور.','- كل صورة مستقلة بذاتها، دون عناصر إضافية أو دمج مع بقية الصور.','- حافظ على العنصر كاملًا داخل حدود الصورة، ولا تقص أجزاءه.',ctx?`- سياق للاسترشاد فقط دون رسم عناصر إضافية: ${ctx}`:'',note?`- ملاحظات فنية: ${note}`:'','',`التسليم: سلّم ${cnt} ${cnt===1?'صورة مستقلة':'صور منفصلة قابلة للتنزيل'}؛ يمكن لأداة توليد الصور استخدام أسماء ملفاتها التلقائية، فلا توجد أسماء مفروضة للملفات.`,'','التحقق قبل التسليم: عدد الصور مطابق للقائمة، كل صورة تحتوي على عنصرها فقط، والصيغة المعلنة مطابقة للملف.','الممنوعات: '+negativeAR(a),'','إذا تعذر إنشاء صور منفصلة، صرّح بذلك بدلًا من تسليم لوحة مجمعة باعتبارها صورًا منفصلة.'].filter(Boolean).join('\n');return `WHITEBOARD ANIMATION — ${individual?'SINGLE INDEPENDENT EDUCATIONAL ASSET':'STRICT BATCH OF INDEPENDENT EDUCATIONAL ASSETS'}\n\nCreate EXACTLY ${cnt} independently usable image ${cnt===1?'asset':'assets'} in a consistent visual style. This is NOT a request for one merged image.\n\nEXACT REQUIRED ARABIC SUBJECTS (preserve each subject literally; do not substitute):\n${subjects.map((s,i)=>`${i+1}. ${s}`).join('\n')}\n\nSTYLE AND OUTPUT REQUIREMENTS:\n- Style: ${look.style[a.style]}; ${colorsEN(a)}\n- ${look.shading[a.shading]}\n- Background of EACH image: ${a.background==='transparent'?'TRUE TRANSPARENT alpha background with no white rectangle or baked backdrop':'solid pure white background'}.\n- Resolution target for EACH image: ${dimension(a)} px (${a.aspect}); keep generous ${margin} margins and avoid cropping.\n- Detail level: ${a.detail}.\n- FILE FORMAT RULE: ${formatEN(a)}\n- Maintain strong consistency of design, ink contour weight, perspective, proportions, shading, and palette across the set.\n- Visual direction: ${directionEN(a)}\n- Each output image must contain ONLY its exact named subject. Do not merge subjects together or add unrelated objects.\n- No lettering, labels, captions, logos, watermarks, or UI frames.\n${ctx?`- Context for consistency only, NOT permission to add props: ${ctx}\n`:''}${note?`- Additional visual instructions, subject to the exact asset list: ${note}\n`:''}\nDELIVERY:\nReturn EXACTLY ${cnt} independently downloadable image ${cnt===1?'file':'files'}. The image generator may assign its own filenames; NO specific filenames or scene numbers are required. Do NOT deliver a collage, contact sheet, combined scene, or storyboard.\n\nQUALITY CHECK BEFORE DELIVERY:\nVerify that the number of separate images equals ${cnt}; each contains only its corresponding exact Arabic subject, and the reported file format is genuine.\n\nNEGATIVE PROMPT: ${negativeEN(a)}\n\nIf separate image delivery is unavailable, state that limitation explicitly; never pretend a single image contains separate downloadable files.`}
+function promptFor(a,subjects,individual){if(!subjects.length)return '';const cnt=subjects.length,margin={wide:'12%',medium:'8%',tight:'5%'}[a.spacing],ctx=a.context.trim(),note=a.notes.trim();
+if(a.promptLang==='ar')return [
+individual?'WHITEBOARD ANIMATION — طلب صورة تعليمية مستقلة':'WHITEBOARD ANIMATION — طلب جماعي لصور تعليمية منفصلة',
+'',
+`أنشئ ${cnt} ${cnt===1?'صورة تعليمية مستقلة':'صور تعليمية مستقلة'} في أسلوب بصري موحد. اجعل كل صورة لعنصر واحد فقط، ولا تدمج العناصر داخل صورة واحدة أو لوحة مجمعة.`,
+'',
+'العناصر المطلوبة بأسمائها العربية دون استبدال أو تعديل:',
+...subjects.map((s,i)=>`${i+1}. ${s}`),
+'',
+'مواصفات الرسم:',
+`- الأسلوب: ${look.style[a.style]}. ${colorsAR(a)}`,
+`- التظليل: ${a.shading==='light'?'تهشير خفيف جدًا':a.shading==='medium'?'تهشير متوسط':'دون تظليل'}.`,
+`- الخلفية: ${a.background==='transparent'?'شفافية حقيقية بقناة ألفا دون خلفية مرسومة':'بيضاء صافية'}.`,
+`- الحجم المستهدف: ${dimension(a)} بكسل (${a.aspect}) لكل صورة، مع هامش أمان ${margin}.`,
+`- التفاصيل: ${a.detail}.`,
+`- الصيغة: ${formatAR(a)}`,
+`- التوجيه البصري: ${directionAR(a)}`,
+'- اتساق واحد في الألوان وسماكة الحدود والمنظور والأسلوب عبر جميع الصور.',
+'- كل صورة مستقلة بذاتها، دون عناصر إضافية أو دمج مع بقية الصور.',
+'- حافظ على العنصر كاملًا داخل حدود الصورة، ولا تقص أجزاءه.',
+ctx?`- سياق للاسترشاد فقط دون رسم عناصر إضافية: ${ctx}`:'',
+note?`- ملاحظات فنية: ${note}`:'',
+'',
+'التسليم: فضّل إخراج صور منفصلة، صورة واحدة لكل عنصر. يمكن لأداة توليد الصور استخدام أسماء ملفاتها التلقائية، فلا توجد أسماء ملفات مفروضة.',
+'',
+'الممنوعات: '+negativeAR(a),
+'',
+cnt>1?'إذا تعذر إخراج جميع الصور المنفصلة دفعة واحدة، فأنشئ الصورة الأولى فقط كمرجع مستقل بنفس الأسلوب بدل إنهاء الطلب كله بالفشل.':''
+].filter(Boolean).join('\n');
+return `WHITEBOARD ANIMATION — ${individual?'SINGLE INDEPENDENT EDUCATIONAL ASSET':'BATCH OF SEPARATE EDUCATIONAL ASSETS'}
+
+Create ${cnt} separate independent image ${cnt===1?'asset':'assets'} in a consistent visual style. Each image should contain one subject only. This is NOT a request for one merged image.
+
+REQUIRED ARABIC SUBJECTS (preserve each subject literally; do not substitute):
+${subjects.map((s,i)=>`${i+1}. ${s}`).join('\n')}
+
+STYLE AND OUTPUT REQUIREMENTS:
+- Style: ${look.style[a.style]}; ${colorsEN(a)}
+- ${look.shading[a.shading]}
+- Background of EACH image: ${a.background==='transparent'?'TRUE TRANSPARENT alpha background with no white rectangle or baked backdrop':'solid pure white background'}.
+- Resolution target for EACH image: ${dimension(a)} px (${a.aspect}); keep generous ${margin} margins and avoid cropping.
+- Detail level: ${a.detail}.
+- FILE FORMAT RULE: ${formatEN(a)}
+- Maintain strong consistency of design, ink contour weight, perspective, proportions, shading, and palette across the set.
+- Visual direction: ${directionEN(a)}
+- Each output image must contain ONLY its exact named subject. Do not merge subjects together or add unrelated objects.
+- No lettering, labels, captions, logos, watermarks, or UI frames.
+${ctx?`- Context for consistency only, NOT permission to add props: ${ctx}\n`:''}${note?`- Additional visual instructions, subject to the exact asset list: ${note}\n`:''}
+DELIVERY:
+Prefer separate independent image delivery, one image per subject. The image generator may assign its own filenames; NO specific filenames or scene numbers are required. Do NOT combine the subjects into one collage, contact sheet, storyboard, or single scene.
+
+NEGATIVE PROMPT: ${negativeEN(a)}
+
+${cnt>1?'If the image generator cannot deliver all requested separate images in one attempt, generate the first listed subject as a standalone image in the same style rather than failing the whole request.':''}`}
 function uid(){return 'group-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7)}
 function current(){return groups.find(g=>g.id===activeId)}
 function save(){try{localStorage.setItem(KEY,JSON.stringify({groups,activeId}))}catch{$('groupStatus').textContent='تعذّر الحفظ في هذا المتصفح. استخدم TXT للبرومبت.'}}
