@@ -1,0 +1,58 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10243f"><title>دليل النشر على GitHub Pages | مولّد عناصر السبورة التعليمية</title><link rel="icon" href="assets/logo.svg" type="image/svg+xml"><style>
+:root{--navy:#10243f;--ink:#1b304c;--muted:#596d82;--border:#dfe7ef}
+*{box-sizing:border-box}body{margin:0;background:#f5f8fc;color:var(--ink);font:15px/1.85 Tahoma,Arial,sans-serif}a{color:#1c5fb9}a:focus-visible{outline:3px solid #6acdc0;outline-offset:3px}
+header{background:var(--navy);color:#fff}nav{max-width:980px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 23px;flex-wrap:wrap}nav a{color:white;text-decoration:none}nav img{width:40px;height:40px;vertical-align:middle;margin-left:9px}nav .cta{background:#facb6f;color:#163352;border-radius:10px;padding:7px 14px;font-weight:800}
+main{max-width:980px;margin:35px auto;padding:30px 39px;border-radius:18px;border:1px solid var(--border);background:#fff;box-shadow:0 6px 20px #122c410c}
+h1{font-size:31px;line-height:1.5;color:#10243f}h2{margin-top:30px;font-size:22px}h3{font-size:17px}p,li{line-height:1.95}ul,ol{padding-right:25px}li{margin-bottom:4px}code,pre{direction:ltr;text-align:left;background:#eef4f9;border-radius:5px;padding:2px 5px;font-family:Consolas,monospace;font-size:13px}pre{padding:14px;overflow:auto}blockquote{margin:17px 0;background:#f1f7fd;border-right:4px solid #178b84;padding:13px 19px;border-radius:8px}table{border-collapse:collapse;display:block;overflow-x:auto;width:100%}td,th{border:1px solid var(--border);padding:9px 12px}th{background:#f1f6fb}hr{border:none;border-top:1px solid var(--border);margin:25px 0}footer{font-size:12px;text-align:center;color:var(--muted);padding:13px 20px 35px}
+@media(max-width:650px){main{padding:19px 16px;margin:15px 10px}h1{font-size:23px}h2{font-size:19px}nav{padding:12px}}
+</style></head><body><header><nav><a href="index.html"><img src="assets/logo.svg" alt=""/> مولّد عناصر السبورة التعليمية</a><a class="cta" href="generator.html">افتح المولّد ←</a></nav></header><main><h1>نشر مولّد عناصر السبورة التعليمية على GitHub Pages</h1>
+<p>هذا الدليل موجّه لمن لا يحتاج إلى البرمجة أو سطر الأوامر.</p>
+<h2>قبل البدء</h2>
+<ul>
+<li>امتلك حسابًا على <a href="https://github.com">GitHub</a>.</li>
+<li>فكّ ضغط حزمة المشروع على جهازك.</li>
+<li>تأكد من وجود ملفي <strong><code>index.html</code></strong> و<strong><code>generator.html</code></strong> في جذر المجلد.</li>
+</ul>
+<h2>النشر خطوة بخطوة</h2>
+<ol>
+<li>من GitHub اختر <strong>New repository</strong>، وسمّه <code>whiteboard-batch-prompt-generator</code> أو اسمًا تختاره.</li>
+<li>اختر <strong>Public</strong> ليتمكن الجميع من زيارة الموقع مجانًا، ثم اضغط <strong>Create repository</strong>.</li>
+<li>داخل المستودع اضغط <strong>Add file → Upload files</strong>، وارفع <strong>محتويات المجلد بعد فك الضغط</strong>، وليس ملف ZIP نفسه. حافظ على مجلدي <code>assets</code> و<code>docs</code> كما هما.</li>
+<li>أكد رفع الملفات برسالة Commit مثل <code>Initial public release</code>.</li>
+<li>افتح <strong>Settings → Pages</strong>.</li>
+<li>تحت <strong>Build and deployment</strong> اختر <strong>Source: Deploy from a branch</strong>.</li>
+<li>حدد الفرع <strong><code>main</code></strong>، والمجلد <strong><code>/(root)</code></strong>، ثم <strong>Save</strong>.</li>
+<li>انتظر انتهاء النشر، ثم افتح الرابط الظاهر في صفحة <strong>Pages</strong>.</li>
+</ol>
+<p>في العادة، إذا كان اسم المستخدم <code>USERNAME</code> واسم المستودع <code>whiteboard-batch-prompt-generator</code>، يكون رابط المشروع على نمط:</p>
+<pre><code class="language-text">https://USERNAME.github.io/whiteboard-batch-prompt-generator/
+</code></pre>
+<p>استبدل <code>USERNAME</code> باسم حسابك الفعلي. الرابط أعلاه <strong>مثال وليس رابطًا منشورًا بالفعل</strong>.</p>
+<h2>اختبار النشر</h2>
+<p>بعد فتح الموقع:</p>
+<ul>
+<li>[ ] تظهر صفحة تعريف المشروع <code>index.html</code>.</li>
+<li>[ ] يعمل زر <strong>«افتح المولّد الآن»</strong> ويعرض <code>generator.html</code>.</li>
+<li>[ ] يعمل زر <strong>«مثال 4.2 الناجح»</strong>.</li>
+<li>[ ] تتغير تعليمات البرومبت بتغيير نمط الألوان.</li>
+<li>[ ] يعمل تبويب <strong>«برومبت عنصر مستقل»</strong>.</li>
+<li>[ ] تعمل أزرار النسخ وحفظ JSON بحسب صلاحيات المتصفح.</li>
+<li>[ ] تظهر صور الفواكه والأيقونة على الصفحة الرئيسية.</li>
+</ul>
+<h2>أخطاء شائعة</h2>
+<p><strong>الصفحة تعرض 404:</strong> تأكد من وجود <code>index.html</code> في جذر المستودع، وليس داخل مجلد إضافي. راجع Settings → Pages والفرع والمسار.</p>
+<p><strong>الرابط للبرنامج لا يعمل:</strong> تأكد من وجود <code>generator.html</code> في نفس مستوى <code>index.html</code>.</p>
+<p><strong>صور الأمثلة لا تظهر:</strong> تأكد من رفع مجلد <code>assets</code> مع الحفاظ على أسماء الملفات.</p>
+<p><strong>التعديل لا يظهر:</strong> انتظر قليلًا وحدّث الصفحة تحديثًا كاملًا، ثم راجع آخر عملية نشر في GitHub Actions.</p>
+<p><strong>تظهر رسالة عند نسخ البرومبت محليًا:</strong> جرّب Chrome/Edge واستخدم النسخ اليدوي عند الحاجة. على GitHub Pages يعمل الموقع عبر HTTPS، ما يساعد صلاحيات الحافظة الحديثة.</p>
+<h2>نشر تحديث لاحق</h2>
+<p>غيّر الملفات على جهازك، ثم افتح المستودع واختر <strong>Add file → Upload files</strong> أو استخدم Git، واحفظ التعديل. GitHub Pages سيعيد نشر الموقع بعد اكتمال التحديث.</p>
+<h2>مصادر رسمية</h2>
+<ul>
+<li><a href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository">رفع الملفات إلى المستودع</a></li>
+<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">إعداد GitHub Pages من الفرع</a></li>
+</ul>
+<blockquote>
+<p>المشروع لا يحتاج إلى خادم أو قاعدة بيانات أو API key. إذا رغبت في تخصيص رابط المستودع، يمكنك تغيير اسمه من GitHub، لكن لا تنس تحديث الروابط المنشورة.</p>
+</blockquote>
+</main><footer>أداة تعليمية مجانية مفتوحة المصدر • <a href="index.html">العودة للصفحة الرئيسية</a> • <a href="LICENSE">MIT</a></footer></body></html>
